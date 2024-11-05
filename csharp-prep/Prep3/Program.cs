@@ -42,7 +42,6 @@ class Program
             Console.Write("Do you want to play again? (yes/no): ");
             response = Console.ReadLine().Trim().ToLower();
         }
-        Console.WriteLine();
         Console.WriteLine("------------------------------------------------");
         Console.WriteLine("Good Game, Well Played!");
     }
