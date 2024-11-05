@@ -9,7 +9,7 @@ class Program
         while (response == "yes")
         {
             Random randomGenerator = new Random();
-            int magic = randomGenerator.Next(1, 100);
+            int magic = randomGenerator.Next(1, 101);
             int guess = 0;
             int count = 0;
 
