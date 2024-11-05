@@ -31,8 +31,29 @@ class Program
             letter = "F";
         }
 
+        // Stretch challenge (1-3)
+        int lastDigit = grade % 10;
+        string sign;
+
+        if (lastDigit >= 7)
+        {
+            sign = "+";
+        }
+        else if (lastDigit < 3)
+        {
+            sign = "-";
+        }
+        else
+        {
+            sign = "";
+        }
+        if (grade >= 97 || letter == "F")
+        {
+            sign = "";
+        }
+
         // Letter grade printed once
-        Console.WriteLine($"Grade: {letter}");
+        Console.WriteLine($"Your grade is: {sign}{letter}");
 
         // check if the student passed
 
@@ -44,5 +65,6 @@ class Program
         {
             Console.Write("I'm sorry, try again next time ):");
         }
+
     }
 }
