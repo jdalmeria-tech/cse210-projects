@@ -40,14 +40,14 @@ class Program
         Console.WriteLine($"The sum is: {total}");
 
         // find the average
-        double avg;
+        float avg;
         if (numberList.Count == 0)
         {
-            avg = 0;
+            avg = 0f;
         }
         else
         {
-            avg = (double)total / numberList.Count;
+            avg = (float)total / numberList.Count;
         }
         Console.WriteLine($"The average is: {avg}");
 
