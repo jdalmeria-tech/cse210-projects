@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 class Program
 {
+    // Define constants as suggested
+    const int LARGEST = -10000000;
+    const int SMALLEST = 10000000;
     static void Main(string[] args)
     {
         // Create a list of numbers (0 to stop)
@@ -20,8 +23,8 @@ class Program
         }
         // set the variables
         int total = 0;
-        int largest = -10000000;
-        int smallestPositive = 10000000;
+        int largest = LARGEST;
+        int smallestPositive = SMALLEST;
 
         // find the sum
         foreach (int n in numberList)
@@ -52,7 +55,7 @@ class Program
         Console.WriteLine($"The average is: {avg}");
 
         // give the largest number
-        if (largest == -10000000)
+        if (largest == LARGEST)
         {
             Console.WriteLine("No largest number found!");
         }
@@ -62,7 +65,7 @@ class Program
         }
 
         // give the smallest positive number
-        if (smallestPositive == 10000000)
+        if (smallestPositive == SMALLEST)
         {
             Console.WriteLine("No positive numbers!");
         }
