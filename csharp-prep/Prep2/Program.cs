@@ -53,7 +53,7 @@ class Program
         }
 
         // Letter grade printed once
-        Console.WriteLine($"Your grade is: {sign}{letter}");
+        Console.WriteLine($"Your grade is: {letter}{sign}");
 
         // check if the student passed
 
