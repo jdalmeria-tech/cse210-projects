@@ -10,6 +10,14 @@ public class Entry
     _date = date;
     _promptText = promptText;
     _entryText = entryText;
+    
+  }
+
+  public void Display()
+  {
+    Console.WriteLine(_promptText);
+    Console.WriteLine($"> {_entryText}");
+    Console.WriteLine();
   }
 
 }
