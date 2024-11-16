@@ -11,6 +11,8 @@ using System;
 // please feel free to check the other methods that I have not mentioned here, I made a comment
 // on my Journal.cs so the checker can understand what that method does
 // thanks for taking the time to check my project for week02 (:
+// other resources that I dived into was YouTube FreeCodeCamp C# lessons and the channel of BroCode C# lessons
+// also this resource: https://www.programiz.com/csharp-programming/library/string/contains (so I can understand .Contains and .Replace)
 
 class Program
 {
