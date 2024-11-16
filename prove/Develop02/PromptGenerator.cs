@@ -17,7 +17,7 @@ public class PromptGenerator
     "Have I done any good in the world today?"
   };
 
-  // Get a random prompt
+  // get a random prompt
   public string GetRandomPrompt()
   {
     Random random = new Random();

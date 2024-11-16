@@ -1,5 +1,17 @@
 using System;
 
+// the stretch challenge that I did:
+// my journal program can handle both csv and txt files
+// handle meaning, load and save files
+// also handled possible errors like; what if user tries to save a file and enters a blankspace or whitespace,
+// what if user loads an incorrect format or a file that doesn't exist
+// what if user asks to display even if there is no entry
+// I have handled these possible errors to keep my program running
+// also added a few methods to handle special characters like commas and quotes in my Journal.cs
+// please feel free to check the other methods that I have not mentioned here, I made a comment
+// on my Journal.cs so the checker can understand what that method does
+// thanks for taking the time to check my project for week02 (:
+
 class Program
 {
     static void Main(string[] args)
@@ -55,16 +67,26 @@ class Program
                 
                 case "4":
                     // save the journal to file
-                    Console.Write("Enter the filename to save: ");
-                    string saveFilename = Console.ReadLine();
-                    theJournal.SaveToFile(saveFilename);
-                    Console.WriteLine("Journal saved...");
+                    // this also catches if the user tries to save a file and enters a blank space.
+                    string filename = "";
+                    do
+                    {
+                     Console.Write("Enter the filename to save (e.g., journal.csv or journal.txt): ");
+                     filename = Console.ReadLine();
+
+                     if (string.IsNullOrWhiteSpace(filename))
+                     {
+                        Console.WriteLine("Filename can't be empty or only whitespace. Please try again.");
+                     }
+                    } while (string.IsNullOrWhiteSpace(filename));
+
+                    theJournal.SaveToFile(filename);
                     break;
 
                 case "5":
                     // quit the program
                     isRunningProgram = false;
-                    Console.WriteLine("Thanks, write your journal entry again soon...");
+                    Console.WriteLine("Thank you! Remember to record your experiences again (:");
                     break;
                 
                 default:
