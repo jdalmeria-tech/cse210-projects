@@ -24,7 +24,10 @@ public class Journal
     {
       foreach (var entry in _entries)
       {
-        writer.WriteLine($"Date: {entry._date} | Prompt: {entry._promptText} | {entry._entryText}");
+        writer.WriteLine(entry._date.ToString("dd-MM-yyyy"));
+        writer.WriteLine(entry._promptText);
+        writer.WriteLine(entry._entryText);
+        writer.WriteLine("---");
       }
     }
   }
@@ -33,16 +36,22 @@ public class Journal
   {
     if (File.Exists(file))
     {
+      _entries.Clear();
       string[] lines = File.ReadAllLines(file);
-      foreach (string line in lines)
+      for (int i = 0; i < lines.Length; i +=4) // 4 lines for each entry(date, prompt, text, and the separator)
       {
-        string[] parts = line.Split('|');
-        if (parts.Length == 3)
+        if (i + 2 < lines.Length)
         {
-          Entry entry = new Entry(parts[0], parts[1], parts[2]);
-          _entries.Add(entry);
+          DateTime date = DateTime.Parse(lines[i]);
+          string promptText = lines[i + 1];
+          string entryText = lines[i + 2];
+          _entries.Add(new Entry(date, promptText, entryText));
         }
       }
+    }
+    else
+    {
+      Console.WriteLine("File not found...");
     }
   }
 }
