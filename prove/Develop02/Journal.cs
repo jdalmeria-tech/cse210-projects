@@ -20,14 +20,14 @@ public class Journal
 
   public void SaveToFile(string file)
   {
-    using (StreamWriter writer = new StreamWriter(file))
+    using (StreamWriter outputFile = new StreamWriter(file))
     {
       foreach (var entry in _entries)
       {
-        writer.WriteLine(entry._date.ToString("dd-MM-yyyy"));
-        writer.WriteLine(entry._promptText);
-        writer.WriteLine(entry._entryText);
-        writer.WriteLine("---");
+        outputFile.WriteLine(entry._date.ToString("dd-MM-yyyy"));
+        outputFile.WriteLine(entry._promptText);
+        outputFile.WriteLine(entry._entryText);
+        outputFile.WriteLine("---");
       }
     }
   }
@@ -45,6 +45,8 @@ public class Journal
           DateTime date = DateTime.Parse(lines[i]);
           string promptText = lines[i + 1];
           string entryText = lines[i + 2];
+          
+          // add the entry to the list
           _entries.Add(new Entry(date, promptText, entryText));
         }
       }

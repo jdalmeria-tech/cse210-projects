@@ -51,7 +51,6 @@ class Program
                     Console.Write("Enter the filename to load: ");
                     string loadFilename = Console.ReadLine();
                     theJournal.LoadFromFile(loadFilename);
-                    Console.WriteLine("Journal loaded..."); // added this so user knows that journal is loaded
                     break;
                 
                 case "4":
