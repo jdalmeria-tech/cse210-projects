@@ -13,6 +13,7 @@ using System;
 // thanks for taking the time to check my project for week02 (:
 // other resources that I dived into was YouTube FreeCodeCamp C# lessons and the channel of BroCode C# lessons
 // also this resource: https://www.programiz.com/csharp-programming/library/string/contains (so I can understand .Contains and .Replace)
+// and this: https://learn.microsoft.com/en-us/dotnet/api/system.stringcomparer.ordinalignorecase?view=net-8.0 (to compare filenames .csv and .txt)
 
 class Program
 {
