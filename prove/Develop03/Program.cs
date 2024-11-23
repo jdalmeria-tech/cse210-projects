@@ -53,7 +53,5 @@ class Program
         Console.WriteLine("Both scripture references are completely hidden (:");
         Console.WriteLine("\nProgram ended. Press any key to exit...");
         Console.ReadKey();
-
-
     }
 }
