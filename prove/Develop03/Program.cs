@@ -2,6 +2,9 @@ using System;
 // thanks for taking the time to review my project
 // stretch challenge that I did for this part is to display two scripture references
 // while maintaining the same principles from the previous version
+// also as stated on the Functional Requirements "As a stretch challenge, try to randomly
+// select from only those words that are not already hidden." - I included this on the program
+// I left notes at the top of each class for the references that helped me as I write the program (:
 class Program
 {
     static void Main(string[] args)

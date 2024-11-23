@@ -1,4 +1,6 @@
 using System;
+// reference
+// https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator
 public class Word
 {
   private string _text;
@@ -25,6 +27,6 @@ public class Word
   }
   public string GetDisplayText()
   {
-    return _isHidden ? new string('_',_text.Length) : _text; // (?)
+    return _isHidden ? new string('_',_text.Length) : _text;
   }
 }

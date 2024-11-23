@@ -1,4 +1,6 @@
 using System;
+// reference
+// https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/conditional-operator
 public class Reference
 {
   private string _book;
