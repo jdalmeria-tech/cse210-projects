@@ -6,14 +6,16 @@ public class Reference
   private int _verse;
   private int _endVerse;
 
-  // constructors
+  // constructor for single verse
   public Reference(string book, int chapter, int verse)
   {
     _book = book;
     _chapter = chapter;
     _verse = verse;
+    _endVerse = -1;
   }
 
+  // constructor for multiple verses
     public Reference(string book, int chapter, int startVerse, int endVerse)
   {
     _book = book;
@@ -22,22 +24,10 @@ public class Reference
     _endVerse = endVerse;
   }
   
-  // class behaviors
-  public void Hide()
-  {
-
-  }
-
-  public void Show()
-  {
-
-  }
-  // public bool isHidden()
-  // {
-
-  // }
   public string GetDisplayText()
   {
-    return $"";
+    return _endVerse == -1
+          ? $"{_book} {_chapter}:{_verse}"
+          : $"{_book} {_chapter}:{_verse}-{_endVerse}";
   }
 }
