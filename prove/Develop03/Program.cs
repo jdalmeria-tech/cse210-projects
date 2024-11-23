@@ -1,5 +1,7 @@
 using System;
-
+// thanks for taking the time to review my project
+// stretch challenge that I did for this part is to display two scripture references
+// while maintaining the same principles from the previous version
 class Program
 {
     static void Main(string[] args)

@@ -1,6 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
+// references
+// https://learn.microsoft.com/en-us/dotnet/csharp/how-to/parse-strings-using-split
+// https://csharp.net-tutorials.com/linq/data-transformations-the-select-method/#google_vignette
+// https://stackoverflow.com/questions/3801748/select-method-in-listt-collection
+// https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.where?view=net-9.0
+// https://www.tutorialsteacher.com/csharp/csharp-list
 public class Scripture
 {
   private Reference _reference;
