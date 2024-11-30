@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-
+// resources
+// https://learn.microsoft.com/en-us/dotnet/api/system.linq.enumerable.count?view=net-9.0
 public class Video
 {
   public string _title;
