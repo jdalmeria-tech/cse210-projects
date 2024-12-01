@@ -8,7 +8,7 @@ public class Address
   private string _state;
   private string _country;
 
-  // constructor(s)
+  // constructor
   public Address(string street, string city, string state, string country)
   {
     _street = street;
@@ -20,6 +20,11 @@ public class Address
   // behaviors
   public string GetFullAddress()
   {
-    return $"Address: {_street} {_city} {_state} {_country}";
+    return $"Address: {_street}\n{_city}, {_state}\n{_country}";
+  }
+
+  public bool IsUSA()
+  {
+    return _country.ToLower() == "usa";
   }
 }

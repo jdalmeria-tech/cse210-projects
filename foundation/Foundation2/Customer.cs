@@ -4,23 +4,28 @@ public class Customer
 {
   // attributes
   private string _name;
-  // private string _address;
+  private Address _address;
 
-  // constructors
-  public Customer(string name)
+  // constructor
+  public Customer(string name, Address address)
   {
     _name = name;
-    // _address = false;
+    _address = address;
   }
 
   // behaviors
   public string GetName()
   {
-    return $"Name: {_name}";
+    return _name;
   }
 
-  // public bool IsUsa()
-  // {
-  //   return _address;
-  // }
+  public bool IsUsa()
+  {
+    return _address.IsUSA();
+  }
+
+  public string GetShippingInfo()
+  {
+    return $"{_name}\n{_address.GetFullAddress()}";
+  }
 }

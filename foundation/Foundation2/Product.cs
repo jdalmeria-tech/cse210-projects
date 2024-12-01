@@ -7,14 +7,26 @@ public class Product
   // attributes
   private string _name;
   private string _id;
-  private double _price;
+  private decimal _price;
   private int _quantity;
 
-  // constructors
+  // constructor
+  public Product(string name, string id, decimal price, int quantity)
+  {
+    _name = name;
+    _id = id;
+    _price = price;
+    _quantity = quantity;
+  }
 
   // behaviors
-  public double CalculateCost()
+  public decimal CalculateCost()
   {
     return _price * _quantity;
+  }
+
+  public string GetPackingInfo()
+  {
+    return $"{_name} (ID: {_id})";
   }
 }
