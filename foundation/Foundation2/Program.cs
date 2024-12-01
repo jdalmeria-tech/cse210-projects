@@ -16,7 +16,7 @@ class Program
         // Create products
         Product product1 = new Product("Widget", "A123", 10.99m, 2);
         Product product2 = new Product("Gadget", "B456", 5.49m, 4);
-        Product product3 = new Product("Doohickey", "C789", 12.75m, 1);
+        Product product3 = new Product("Doohickey", "C789", 12.75m, 3);
 
         // Create orders
         Order order1 = new Order(customer1);
