@@ -10,6 +10,8 @@ public class Product
   private double _price;
   private int _quantity;
 
+  // constructors
+
   // behaviors
   public double CalculateCost()
   {
