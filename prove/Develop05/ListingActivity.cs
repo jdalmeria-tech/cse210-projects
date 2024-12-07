@@ -1,4 +1,10 @@
 using System;
+// references
+// https://learn.microsoft.com/en-us/dotnet/api/system.string.isnullorempty?view=net-9.0
+// https://www.geeksforgeeks.org/c-sharp-isnullorempty-method/
+// https://www.educative.io/answers/how-to-check-if-a-string-is-null-or-empty-in-c-sharp
+// https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.count?view=net-9.0
+// https://dotnettutorials.net/lesson/linq-count-method/#google_vignette
 
 public class ListingActivity : Activity
 {
@@ -19,13 +25,13 @@ public class ListingActivity : Activity
     _description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
     _duration = 60;
   }
-
+  // constructor
   public void RunTheActivity()
   {
     DisplayStartingMessage();
 
     string prompt = GetRandomPrompt();
-    Console.WriteLine($"List as many responses as you can to the following prompt:");
+    Console.WriteLine("List as many responses as you can to the following prompt:");
     Console.WriteLine($"--- {prompt} ---");
     Console.WriteLine("You may begin in: ");
     ShowTimer(5);
@@ -57,6 +63,4 @@ public class ListingActivity : Activity
     }
     return list;
   }
-
-
 }

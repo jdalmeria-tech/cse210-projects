@@ -10,6 +10,7 @@ public class Activity
   protected string _description;
   protected int _duration;
 
+  // constructor
   public Activity(string name, string description, int duration)
   {
     _name = name;

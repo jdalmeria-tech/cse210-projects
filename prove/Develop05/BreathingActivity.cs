@@ -3,6 +3,8 @@ using System;
 public class BreathingActivity : Activity
 {
   // no attributes needed
+
+  // constructor
   public BreathingActivity()
   {
   _name = "Breathing";
