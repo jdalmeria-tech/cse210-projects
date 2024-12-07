@@ -3,7 +3,15 @@ using System;
 public class ListingActivity : Activity
 {
   private int _count;
-  private List<string> _prompts;
+  private List<string> _prompts = new List<string>
+  {
+    "Who are people that you appreciate?",
+    "What are personal strengths of yours?",
+    "Who are the people that you have helped this week?",
+    "When have you felt the Holy Ghost this week?",
+    "Who are some of your personal heroes?",
+    "What were the emotions that you have felt and validated this week?",
+  };
 
   public ListingActivity()
   {
@@ -14,17 +22,40 @@ public class ListingActivity : Activity
 
   public void RunTheActivity()
   {
+    DisplayStartingMessage();
 
+    string prompt = GetRandomPrompt();
+    Console.WriteLine($"List as many responses as you can to the following prompt:");
+    Console.WriteLine($"--- {prompt} ---");
+    Console.WriteLine("You may begin in: ");
+    ShowTimer(5);
+    Console.Write("> ");
+
+    List<string> userList = GetListFromUser();
+    Console.WriteLine($"You listed {userList.Count} items! (:");
+
+    DisplayEndingMessage();
   }
 
   public string GetRandomPrompt()
   {
-    return "";
+    Random random = new Random();
+    return _prompts[random.Next(_prompts.Count)];
   }
 
   public List<string> GetListFromUser()
   {
-  
+    List<string> list = new List<string>();
+    DateTime startTime = DateTime.Now;
+    DateTime endTime = startTime.AddSeconds(_duration);
+
+    while (startTime < endTime)
+    {
+      string input = Console.ReadLine();
+      if (!string.IsNullOrEmpty(input))
+          list.Add(input);
+    }
+    return list;
   }
 
 
