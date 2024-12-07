@@ -19,13 +19,11 @@ public class ListingActivity : Activity
     "What were the emotions that you have felt and validated this week?",
   };
 
-  public ListingActivity()
-  {
-    _name = "Listing";
-    _description = "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.";
-    _duration = 60;
-  }
   // constructor
+  public ListingActivity() : base ("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", 60)
+  {
+    // nothing to initialize
+  }
   public void RunTheActivity()
   {
     DisplayStartingMessage();
