@@ -18,7 +18,7 @@ public class ReflectingActivity : Activity
     "> How did you get started?",
     "> What made this time, different than other times when you were not as successful?",
     "> What is your favorite thing about this experience?",
-    "> What coudl you learn from this experience that applies to other situations?",
+    "> What could you learn from this experience that applies to other situations?",
     "> What did you learn about yourself through this experience?",
     "> How can you keep this experience in mind in the future?"
   };
@@ -38,7 +38,8 @@ public class ReflectingActivity : Activity
     Console.Write("You may begin in: ");
     ShowTimer(5);
 
-    DisplayQuestions(); // cycles thru random questions
+    int remainingDuration = _duration; // copy the duration for countdown
+    DisplayQuestions(ref remainingDuration); // cycles thru random questions
 
     DisplayEndingMessage();
   }
@@ -64,14 +65,14 @@ public class ReflectingActivity : Activity
     ShowSpinner(5);
   }
 
-  public void DisplayQuestions()
+  public void DisplayQuestions(ref int remainingDuration)
   {
-    while (_duration > 0)
+    while (remainingDuration > 0)
     {
       string question = GetRandomQuestion();
       Console.WriteLine(question);
-      ShowSpinner(7);
-      _duration -= 7;
+      ShowSpinner(7); // let's say that it takes 7s per question reflection
+      remainingDuration -= 7; // decrease the time
     }
   }
 }

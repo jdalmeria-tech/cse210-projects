@@ -22,8 +22,9 @@ public class ListingActivity : Activity
   // constructor
   public ListingActivity() : base ("Listing", "This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.", 60)
   {
-    // nothing to initialize
+    _count = 0;
   }
+
   public void RunTheActivity()
   {
     DisplayStartingMessage();
@@ -36,6 +37,7 @@ public class ListingActivity : Activity
     Console.Write("> ");
 
     List<string> userList = GetListFromUser();
+    _count = userList.Count; // update _count with the number of items the user listed
     Console.WriteLine($"You listed {userList.Count} items! (:");
 
     DisplayEndingMessage();
@@ -53,7 +55,7 @@ public class ListingActivity : Activity
     DateTime startTime = DateTime.Now;
     DateTime endTime = startTime.AddSeconds(_duration);
 
-    while (startTime < endTime)
+    while (DateTime.Now < endTime)
     {
       string input = Console.ReadLine();
       if (!string.IsNullOrEmpty(input))

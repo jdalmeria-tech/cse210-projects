@@ -21,8 +21,8 @@ public class Activity
   public void DisplayStartingMessage()
   {
     Console.WriteLine($"Welcome to the {_name} Activity.");
-    Console.WriteLine(_description);
-    Console.WriteLine("How long, in seconds, would you like for your session? ");
+    Console.WriteLine($"\n{_description}");
+    Console.WriteLine("\nHow long, in seconds, would you like for your session? ");
     _duration = int.Parse(Console.ReadLine());
     Console.WriteLine("Get Ready...");
     ShowSpinner(3);
@@ -31,24 +31,38 @@ public class Activity
   public void DisplayEndingMessage()
   {
     Console.WriteLine("Well done!!!");
-    Console.WriteLine($"You have completed {_duration} seconds of the {_name} Activity (:");
+    Console.WriteLine($"\nYou have completed {_duration} seconds of the {_name} Activity (:");
     ShowSpinner(3);
   }
 
   public void ShowSpinner(int seconds)
   {
-    string[] spinner = {"\\", "|", "/", "-"};
-    DateTime startTime = DateTime.Now;
-    DateTime endTime = startTime.AddSeconds(seconds);
-    int index = 0;
+    List<string> animationStrings = new List<string>();
+    animationStrings.Add("|");
+    animationStrings.Add("/");
+    animationStrings.Add("-");
+    animationStrings.Add("\\");
 
-    while (startTime < endTime)
+    DateTime startTime = DateTime.Now;
+    DateTime endTime = startTime.AddSeconds(10);
+
+    int i = 0;
+
+    while (DateTime.Now < endTime)
     {
-      Console.Write(spinner[index]);
-      Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop); // this makes the code shorter to overwrite the symbol
-      index = (index + 1) % spinner.Length;
-      Thread.Sleep(255);
+      string s = animationStrings[i];
+      Console.Write(s);
+      Thread.Sleep(1000);
+      Console.Write("\b \b");
+
+      i++;
+
+      if (i >= animationStrings.Count)
+      {
+        i = 0;
+      }
     }
+
     Console.WriteLine();
   }
 
@@ -56,8 +70,9 @@ public class Activity
   {
     for (int i = seconds; i > 0; i--)
     {
-      Console.WriteLine($"{i}(s)");
+      Console.Write(i);
       Thread.Sleep(1000);
+      Console.Write("\b \b");
     }
     Console.WriteLine();
   }
