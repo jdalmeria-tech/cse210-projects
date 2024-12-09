@@ -2,6 +2,11 @@ using System;
 
 // references
 // https://learn.microsoft.com/en-us/dotnet/api/system.random.next?view=net-9.0
+// ChatGPT was also used for this class, I asked for ways to make sure that as user enters the duration
+// number, it gives the exact number remainingDuration was added/implemented
+// https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.removeat?view=net-9.0
+// https://www.tutorialspoint.com/what-is-the-removeat-method-in-chash-lists
+// 
 public class ReflectingActivity : Activity
 {
   private List<string> _prompts = new List<string>
@@ -44,36 +49,61 @@ public class ReflectingActivity : Activity
 
     DisplayEndingMessage();
   }
-  public string GetRandomPrompt()
+
+  // this retrieves random item from a list and removes it to ensure
+  // it only appears once
+  // if the list is empty it will return a placeholder message
+  private string GetRandomItemAndRemove(ref List<string> list)
   {
+    if (list.Count == 0)
+    {
+      return "No more items to display...";
+    }
+
     Random random = new Random();
-    return _prompts[random.Next(_prompts.Count)];
+    int index = random.Next(list.Count);
+    string item = list[index];
+    list.RemoveAt(index);
+    return item;
   }
 
-  public string GetRandomQuestion()
-  {
-    Random random = new Random();
-    return _questions[random.Next(_questions.Count)];
-  }
+  // public string GetRandomQuestion()
+  // {
+  //   Random random = new Random();
+  //   return _questions[random.Next(_questions.Count)];
+  // }
 
   public void DisplayPrompt()
   {
-    string prompt = GetRandomPrompt();
-    Console.WriteLine("Consider the following prompt:");
-    Console.WriteLine($"--- {prompt} ---");
-    Console.WriteLine("When you have something in mind, press enter to continue.");
-    Console.ReadLine();
-    ShowSpinner(8);
+    if (_prompts.Count > 0)
+    {
+      string prompt = GetRandomItemAndRemove(ref _prompts); // picks a prompt then removes it
+      Console.WriteLine("Consider the following prompt:");
+      Console.WriteLine($"--- {prompt} ---");
+      Console.WriteLine("When you have something in mind, press enter to continue.");
+      Console.ReadLine();
+      ShowSpinner(8);
+    }
+    else
+    {
+      Console.WriteLine("All prompts have been used (:");
+    }
+    
   }
 
   public void DisplayQuestions(ref int remainingDuration)
   {
-    while (remainingDuration > 0)
+    while (remainingDuration > 0 &&_questions.Count > 0)
     {
-      string question = GetRandomQuestion();
+      string question = GetRandomItemAndRemove(ref _questions); // picks a question and removes it
       Console.WriteLine(question);
       ShowSpinner(8); // let's say that it takes 8s per question reflection
       remainingDuration -= 8; // decrease the time
+    }
+
+    if (_questions.Count == 0)
+    {
+      Console.WriteLine("All questions have been used (:");
     }
   }
 }
