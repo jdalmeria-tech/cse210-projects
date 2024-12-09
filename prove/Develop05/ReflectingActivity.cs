@@ -36,7 +36,7 @@ public class ReflectingActivity : Activity
 
     Console.WriteLine("Now ponder on the following questions as they relate to this experience.");
     Console.Write("You may begin in: ");
-    ShowTimer(5);
+    ShowTimer(8);
 
     int remainingDuration = _duration; // copy the duration for countdown
     DisplayQuestions(ref remainingDuration); // cycles thru random questions
@@ -62,7 +62,7 @@ public class ReflectingActivity : Activity
     Console.WriteLine($"--- {prompt} ---");
     Console.WriteLine("When you have something in mind, press enter to continue.");
     Console.ReadLine();
-    ShowSpinner(5);
+    ShowSpinner(8);
   }
 
   public void DisplayQuestions(ref int remainingDuration)
@@ -71,8 +71,8 @@ public class ReflectingActivity : Activity
     {
       string question = GetRandomQuestion();
       Console.WriteLine(question);
-      ShowSpinner(7); // let's say that it takes 7s per question reflection
-      remainingDuration -= 7; // decrease the time
+      ShowSpinner(8); // let's say that it takes 8s per question reflection
+      remainingDuration -= 8; // decrease the time
     }
   }
 }

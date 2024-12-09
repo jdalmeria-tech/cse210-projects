@@ -18,7 +18,7 @@ class Program
 
             if (choice == 4)
             {
-                Console.WriteLine("Thanks, hope to see you again soon (:");
+                Console.WriteLine("Thank you. Hope to see you again soon (:");
                 break; // this ends the program
             }
 

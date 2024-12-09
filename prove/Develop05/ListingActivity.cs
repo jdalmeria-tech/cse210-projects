@@ -32,9 +32,8 @@ public class ListingActivity : Activity
     string prompt = GetRandomPrompt();
     Console.WriteLine("List as many responses as you can to the following prompt:");
     Console.WriteLine($"--- {prompt} ---");
-    Console.WriteLine("You may begin in: ");
-    ShowTimer(5);
-    Console.Write("> ");
+    Console.Write("You may begin in: ");
+    ShowTimer(8);
 
     List<string> userList = GetListFromUser();
     _count = userList.Count; // update _count with the number of items the user listed
@@ -57,10 +56,17 @@ public class ListingActivity : Activity
 
     while (DateTime.Now < endTime)
     {
+      Console.Write("> ");
       string input = Console.ReadLine();
+
+      // this will add the input to the list if it's not empty
       if (!string.IsNullOrEmpty(input))
-          list.Add(input);
+      {
+        list.Add(input);
+      }
     }
+
+    Console.WriteLine();
     return list;
   }
 }

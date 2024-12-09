@@ -16,9 +16,9 @@ public class BreathingActivity : Activity
 
     for (int i = 0; i < _duration / 6; i++) // let's say it is 6 secs per cycle
     {
-      Console.WriteLine("Breathe in twice...");
+      Console.Write("Breathe in twice... ");
       ShowTimer(4);
-      Console.WriteLine("Breathe out...");
+      Console.Write("Breathe out... ");
       ShowTimer(5);
     }
 

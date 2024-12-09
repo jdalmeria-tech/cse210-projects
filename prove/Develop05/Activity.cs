@@ -24,27 +24,25 @@ public class Activity
     Console.WriteLine($"\n{_description}");
     Console.WriteLine("\nHow long, in seconds, would you like for your session? ");
     _duration = int.Parse(Console.ReadLine());
+    Console.Clear();
     Console.WriteLine("Get Ready...");
-    ShowSpinner(3);
+    ShowSpinner(5);
   }
 
   public void DisplayEndingMessage()
   {
     Console.WriteLine("Well done!!!");
     Console.WriteLine($"\nYou have completed {_duration} seconds of the {_name} Activity (:");
-    ShowSpinner(3);
+    ShowSpinner(8);
+    Console.Clear();
   }
 
   public void ShowSpinner(int seconds)
   {
-    List<string> animationStrings = new List<string>();
-    animationStrings.Add("|");
-    animationStrings.Add("/");
-    animationStrings.Add("-");
-    animationStrings.Add("\\");
+    List<string> animationStrings = new List<string> {"|", "/", "-", "\\"};
 
     DateTime startTime = DateTime.Now;
-    DateTime endTime = startTime.AddSeconds(10);
+    DateTime endTime = startTime.AddSeconds(seconds);
 
     int i = 0;
 
@@ -52,11 +50,11 @@ public class Activity
     {
       string s = animationStrings[i];
       Console.Write(s);
-      Thread.Sleep(1000);
+      Thread.Sleep(500);
       Console.Write("\b \b");
 
       i++;
-
+      // this will reset the animation loop
       if (i >= animationStrings.Count)
       {
         i = 0;
