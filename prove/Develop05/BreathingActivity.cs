@@ -18,8 +18,11 @@ public class BreathingActivity : Activity
     {
       Console.Write("Breathe in twice... ");
       ShowTimer(4);
+      
       Console.Write("Breathe out... ");
       ShowTimer(5);
+
+      Console.WriteLine();
     }
 
     DisplayEndingMessage();

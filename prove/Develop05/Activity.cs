@@ -20,6 +20,7 @@ public class Activity
 
   public void DisplayStartingMessage()
   {
+    Console.Clear();
     Console.WriteLine($"Welcome to the {_name} Activity.");
     Console.WriteLine($"\n{_description}");
     Console.WriteLine("\nHow long, in seconds, would you like for your session? ");
