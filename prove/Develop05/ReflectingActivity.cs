@@ -6,7 +6,6 @@ using System;
 // number, it gives the exact number remainingDuration was added/implemented
 // https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.removeat?view=net-9.0
 // https://www.tutorialspoint.com/what-is-the-removeat-method-in-chash-lists
-// 
 public class ReflectingActivity : Activity
 {
   private List<string> _prompts = new List<string>
@@ -67,6 +66,7 @@ public class ReflectingActivity : Activity
     return item;
   }
 
+  // not needed since a new feature was added
   // public string GetRandomQuestion()
   // {
   //   Random random = new Random();
