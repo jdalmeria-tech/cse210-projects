@@ -4,6 +4,7 @@ using System;
 // https://stackoverflow.com/questions/51892943/set-cursor-position-relative-to-last-line-of-text-c-sharp-console-app
 // https://www.w3schools.com/cs/cs_for_loop.php
 // https://www.programiz.com/csharp-programming/for-loop
+// https://www.youtube.com/watch?v=EvSyka9vJho
 public class Activity
 {
   protected string _name;
