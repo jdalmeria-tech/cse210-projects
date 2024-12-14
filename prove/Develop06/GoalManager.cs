@@ -1,4 +1,6 @@
 using System;
+using System.Collections. Generic;
+using System.IO;
 
 public class GoalManager
 {
@@ -12,9 +14,54 @@ public class GoalManager
 
   public void Start()
   {
-    //needs to improve This is the "main" function for this class. It is called by Program.cs, and then runs the menu loop.
+    bool running = true;
+
+    while (running)
+    {
+      Console.WriteLine("\nMenu Options:");
+      Console.WriteLine("   1. Create a New Goal");
+      Console.WriteLine("   2. List Goals");
+      Console.WriteLine("   3. Save Goals");
+      Console.WriteLine("   4. Load Goals");
+      Console.WriteLine("   5. Record Event");
+      Console.WriteLine("   6. Quit");
+      Console.Write("Select a choice from the menu: ");
+      string choice = Console.ReadLine();
+
+      switch (choice)
+      {
+        case "1":
+            CreateGoal();
+            break;
+
+        case "2":
+            ListGoalDetails();
+            break;
+
+        case "3":
+            SaveGoals();
+            break;
+
+        case "4":
+            LoadGoals();
+            break;
+
+        case "5":
+            RecordEvent();
+            break;
+
+        case "6":
+            running = false;
+            break;
+
+        default:
+            Console.WriteLine("Invalid option. Choose from 1-6");
+            break;
+      }
+    }
   }
 
+  // this part next! (: one block of code at a time
   public void DisplayPlayerInfo()
   {
     //needs to improve Displays the players current score.
