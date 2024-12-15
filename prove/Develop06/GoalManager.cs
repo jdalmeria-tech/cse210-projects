@@ -9,6 +9,7 @@ public class GoalManager
 
   public GoalManager()
   {
+    _goals = new List<Goal>();
     _score = 0;
   }
 
@@ -18,6 +19,7 @@ public class GoalManager
 
     while (running)
     {
+      Console.WriteLine($"You have {_score} points.");
       Console.WriteLine("\nMenu Options:");
       Console.WriteLine("   1. Create a New Goal");
       Console.WriteLine("   2. List Goals");
@@ -52,6 +54,7 @@ public class GoalManager
 
         case "6":
             running = false;
+            Console.WriteLine("Thank you, looking forward to hearing from you again! (:");
             break;
 
         default:
