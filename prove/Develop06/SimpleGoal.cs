@@ -6,20 +6,30 @@ public class SimpleGoal : Goal
 
   public SimpleGoal(string name, string description, int points) : base (name, description, points)
   {
+    _isComplete = false;
   }
 
   public override void RecordEvent()
   {
-    //needs to improve
+    _isComplete = true;
   }
 
   public override bool IsComplete()
   {
-    return true; //needs to improve
+    return _isComplete;
   }
 
   public override string GetStringRepresentation()
   {
-    return""; //needs to improve
+    return $"SimpleGoal:{_shortName},{_description},{_points},{_isComplete}";
+  }
+
+  public static SimpleGoal FromString(string details)
+  {
+    var parts = details.Split(",");
+    return new SimpleGoal(parts[0], parts[1], int.Parse(parts[2]))
+    {
+      _isComplete = bool.Parse(parts[3])
+    };
   }
 }
