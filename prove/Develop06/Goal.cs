@@ -1,5 +1,9 @@
 using System;
 
+// resources:
+// https://byui-cse.github.io/cse210-ww-course/week05/prepare.html
+// https://byui-cse.github.io/cse210-ww-course/week06/prepare.html
+
 public abstract class Goal
 {
   protected string _shortName;

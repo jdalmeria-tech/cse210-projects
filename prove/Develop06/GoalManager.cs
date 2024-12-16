@@ -2,6 +2,15 @@ using System;
 using System.Collections. Generic;
 using System.IO;
 
+// resources:
+// https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/indexers/using-indexers
+// https://www.geeksforgeeks.org/c-sharp-list-class/
+// https://www.youtube.com/watch?v=ToKbMa3xvMs
+// https://www.youtube.com/watch?v=nYCMW3kfTvs
+// https://www.w3schools.com/cs/cs_exceptions.php
+// https://www.youtube.com/watch?v=EvSyka9vJho&t=37s
+// https://www.youtube.com/watch?v=3SpYrojvRjs&list=PLI8-hwpdo-LajI3oeQFs7fPoaWve82ea9
+// https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.clear?view=net-9.0
 public class GoalManager
 {
   private List<Goal> _goals;
@@ -19,8 +28,8 @@ public class GoalManager
 
     while (running)
     {
-      Console.WriteLine($"You have {_score} points.");
-      Console.WriteLine("\nMenu Options:");
+      Console.WriteLine($"\nYou have {_score} points.\n");
+      Console.WriteLine("Menu Options:");
       Console.WriteLine("   1. Create a New Goal");
       Console.WriteLine("   2. List Goals");
       Console.WriteLine("   3. Save Goals");
@@ -58,7 +67,7 @@ public class GoalManager
             break;
 
         default:
-            Console.WriteLine("Invalid option. Choose from 1-6");
+            Console.WriteLine("Invalid option. Choose between 1-6");
             break;
       }
     }
@@ -70,19 +79,28 @@ public class GoalManager
     Console.WriteLine($"You have {_score} points.");
   }
 
-  public void ListGoalNames()
-  {
-    for (int i = 0; i < _goals.Count; i ++)
-    {
-      Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}");
-    }
-  }
+  // public void ListGoalNames()
+  // {
+  //   for (int i = 0; i < _goals.Count; i ++)
+  //   {
+  //     Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}");
+  //   }
+  // }
+  // not sure if I still need this
 
   public void ListGoalDetails()
   {
-    foreach (var goal in _goals)
+    if (_goals.Count == 0)
     {
-      Console.WriteLine(goal.GetDetailsString());
+      Console.WriteLine("No goals have been created yet.");
+    }
+    else
+    {
+      Console.WriteLine("The goals are:");
+      for (int i = 0; i <_goals.Count; i++)
+      {
+        Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}");
+      }
     }
   }
 
@@ -134,18 +152,26 @@ public class GoalManager
   // the event by calling the RecordEvent method on that goal
   public void RecordEvent()
   {
-    ListGoalNames();
-    Console.Write("Which goal did you complete? Enter the number: ");
-    int choice = int.Parse(Console.ReadLine()) - 1; // remember that lists starts with 0
+    ListGoalDetails();
+    if (_goals.Count > 0)
+    {
+      Console.Write("Which goal did you complete? Enter the number: ");
+      int choice = int.Parse(Console.ReadLine()) - 1;
 
-    if (choice >= 0 && choice < _goals.Count)
-    {
-      _goals[choice].RecordEvent();
-      _score += _goals[choice].GetPoints();
-    }
-    else
-    {
-      Console.WriteLine("Invalid option.");
+      if (choice >= 0 && choice < _goals.Count)
+      {
+        Goal goal = _goals[choice];
+        goal.RecordEvent();
+        _score += goal.GetPoints();
+        if (goal.IsComplete())
+        {
+          Console.WriteLine($"You completed the goal: {goal.GetDetailsString()}");
+        }
+      }
+      else
+      {
+        Console.WriteLine("Invalid option.");
+      }
     }
   }
 
@@ -195,6 +221,10 @@ public class GoalManager
           
           case "ChecklistGoal":
             _goals.Add(ChecklistGoal.FromString(details));
+            break;
+
+          default:
+            Console.WriteLine($"Unknown goal type: {goalType}");
             break;
         }
       }

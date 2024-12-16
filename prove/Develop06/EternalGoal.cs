@@ -1,5 +1,6 @@
 using System;
 
+// references here are somewhat similar to the SimpleGoal.cs
 public class EternalGoal : Goal
 {
   // attribute? none needed
@@ -20,13 +21,12 @@ public class EternalGoal : Goal
 
   public override string GetStringRepresentation()
   {
-    return $"SimpleGoal:{_shortName},{_description},{_points}";
+    return $"EternalGoal:{_shortName},{_description},{_points}";
   }
 
   public static EternalGoal FromString(string details)
   {
     var parts = details.Split(",");
-    return new EternalGoal(parts[1], parts[2], int.Parse(parts[3]));
-    
+    return new EternalGoal(parts[0], parts[1], int.Parse(parts[2]));
   }
 }

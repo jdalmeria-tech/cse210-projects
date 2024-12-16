@@ -1,5 +1,9 @@
 using System;
 
+// references:
+// https://www.w3schools.com/cs/cs_conditions_shorthand.php
+// https://www.tutorialsteacher.com/csharp/csharp-ternary-operator
+// https://www.youtube.com/watch?v=uC0NJ3aJv5A
 public class ChecklistGoal : Goal
 {
   private int _amountCompleted;
@@ -16,7 +20,6 @@ public class ChecklistGoal : Goal
   public override void RecordEvent()
   {
     _amountCompleted++;
-
     if (IsComplete())
     {
       Console.WriteLine($"CONGRATS! You completed the Checklist Goal: {_shortName} and earned {_bonus} bonus points!");
@@ -46,9 +49,8 @@ public class ChecklistGoal : Goal
   public static ChecklistGoal FromString(string details)
   {
     var parts = details.Split(",");
-    var goal = new ChecklistGoal(parts[1], parts[2], int.Parse(parts[3]), int.Parse(parts[4]), int.Parse(parts[5]));
-    goal._amountCompleted = int.Parse(parts[6]);
+    var goal = new ChecklistGoal(parts[0], parts[1], int.Parse(parts[2]), int.Parse(parts[3]), int.Parse(parts[4]));
+    goal._amountCompleted = int.Parse(parts[5]);
     return goal;
-  
   }
 }
