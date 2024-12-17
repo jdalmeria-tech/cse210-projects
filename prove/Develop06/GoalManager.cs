@@ -12,6 +12,8 @@ using System.IO;
 // https://www.youtube.com/watch?v=EvSyka9vJho&t=37s
 // https://www.youtube.com/watch?v=3SpYrojvRjs&list=PLI8-hwpdo-LajI3oeQFs7fPoaWve82ea9
 // https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.clear?view=net-9.0
+// https://learn.microsoft.com/en-us/dotnet/api/system.string.join?view=net-9.0
+// https://www.youtube.com/watch?v=QhHjd8uCzyM
 public class GoalManager
 {
   private List<Goal> _goals;
