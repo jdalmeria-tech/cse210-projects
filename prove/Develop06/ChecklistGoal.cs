@@ -43,7 +43,7 @@ public class ChecklistGoal : Goal
 
   public override string GetStringRepresentation()
   {
-    return $"ChecklistGoal,{_shortName},{_description},{_points},{_target},{_bonus},{_amountCompleted}";
+    return $"ChecklistGoal:{_shortName},{_description},{_points},{_target},{_bonus},{_amountCompleted}";
   }
 
   public static ChecklistGoal FromString(string details)

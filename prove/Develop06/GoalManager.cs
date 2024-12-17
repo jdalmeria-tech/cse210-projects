@@ -1,5 +1,6 @@
 using System;
 using System.Collections. Generic;
+using System.Formats.Asn1;
 using System.IO;
 
 // resources:
@@ -181,15 +182,20 @@ public class GoalManager
     Console.Write("Enter the filename to save your goals: ");
     string filename = Console.ReadLine();
 
-    using (StreamWriter outputFile = new StreamWriter(filename))
+    using (StreamWriter writer = new StreamWriter(filename))
     {
-      foreach (var goal in _goals)
+      
+      // this saves the score
+      writer.WriteLine(_score);
+      
+      // save each goal's string representation
+      foreach (Goal goal in _goals)
       {
-        outputFile.WriteLine(goal.GetStringRepresentation());
+        writer.WriteLine(goal.GetStringRepresentation());
       }
     }
 
-    Console.WriteLine("Goals saved successfully!");
+    Console.WriteLine("Goals and score saved successfully!");
   }
 
   // Loads the list of goals from a file.
@@ -201,41 +207,44 @@ public class GoalManager
     if (File.Exists(filename))
     {
       string [] lines = File.ReadAllLines(filename);
-      _goals.Clear();
 
-      foreach (string line in lines)
+      // read the first line as the score
+
+      _score = int.Parse(lines[0]);
+
+      // clear existing goals and load from file
+      _goals.Clear();
+      for (int i = 1; i < lines.Length; i++) // start at index 1 to skip the score
       {
+        string line = lines[i];
         string[] parts = line.Split(":");
         string goalType = parts[0];
-        string details = parts[1];
+        string[] goalDetails = parts[1].Split(",");
 
         switch (goalType)
         {
           case "SimpleGoal":
-            _goals.Add(SimpleGoal.FromString(details));
-            break;
-          
-          case "EternalGoal":
-            _goals.Add(EternalGoal.FromString(details));
-            break;
-          
-          case "ChecklistGoal":
-            _goals.Add(ChecklistGoal.FromString(details));
+            _goals.Add(SimpleGoal.FromString(string.Join(",", goalDetails)));
             break;
 
-          default:
-            Console.WriteLine($"Unknown goal type: {goalType}");
+          case "EternalGoal":
+            _goals.Add(EternalGoal.FromString(string.Join(",", goalDetails)));
             break;
+
+          case "ChecklistGoal":
+            _goals.Add(ChecklistGoal.FromString(string.Join(",", goalDetails)));
+            break;
+
         }
       }
 
-      Console.WriteLine("Goals loaded successfully!");
+      Console.WriteLine("Goals and score loaded successfully");
+      
     }
     else
     {
       Console.WriteLine("File not found :(");
     }
-
   }
 
 }
